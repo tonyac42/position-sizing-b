@@ -1,0 +1,7 @@
+sizer-engine
+fastapi>=0.100
+uvicorn>=0.23
+
+[test]
+pytest>=7
+httpx>=0.24
