@@ -1,0 +1,148 @@
+/* Sizer UI theme. Chart colors follow the validated reference palette
+   (dataviz method): roles as CSS custom properties, light and dark both
+   selected, text always in ink tokens rather than series colors. */
+
+:root {
+  --surface-1: #fcfcfb;
+  --page: #f9f9f7;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --baseline: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.10);
+
+  --series-1: #2a78d6;   /* blue: primary series / binding highlight */
+  --series-3: #eda100;   /* yellow: worst-5% path */
+  --series-6: #e34948;   /* red: worst-1% path */
+  --seq-250: #86b6ef;    /* recessive bar fill (non-binding caps) */
+  --seq-550: #1c5cab;
+
+  --status-good: #0ca30c;
+  --status-warning: #fab219;
+  --status-serious: #ec835a;
+  --status-critical: #d03b3b;
+
+  --radius: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface-1: #1a1a19;
+    --page: #0d0d0d;
+    --ink: #ffffff;
+    --ink-2: #c3c2b7;
+    --muted: #898781;
+    --grid: #2c2c2a;
+    --baseline: #383835;
+    --border: rgba(255, 255, 255, 0.10);
+    --series-1: #3987e5;
+    --series-3: #c98500;
+    --series-6: #e66767;
+    --seq-250: #184f95;
+    --seq-550: #6da7ec;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.app { max-width: 1180px; margin: 0 auto; padding: 20px; }
+.topbar { display: flex; align-items: baseline; gap: 16px; margin-bottom: 14px; }
+.topbar h1 { font-size: 20px; margin: 0; }
+.topbar .sub { color: var(--ink-2); font-size: 13px; }
+.tabs { display: flex; gap: 4px; margin: 10px 0 18px; border-bottom: 1px solid var(--grid); }
+.tabs button {
+  background: none; border: none; padding: 8px 14px; font: inherit; cursor: pointer;
+  color: var(--ink-2); border-bottom: 2px solid transparent;
+}
+.tabs button.active { color: var(--ink); border-bottom-color: var(--series-1); font-weight: 600; }
+
+.card {
+  background: var(--surface-1); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 16px; margin-bottom: 14px;
+}
+.card h2 { font-size: 15px; margin: 0 0 10px; }
+.card h3 { font-size: 13px; margin: 14px 0 6px; color: var(--ink-2); text-transform: uppercase; letter-spacing: .04em; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px 14px; }
+.field { display: flex; flex-direction: column; gap: 3px; }
+.field label { font-size: 12px; color: var(--ink-2); }
+.field input, .field select, .field textarea {
+  font: inherit; padding: 6px 8px; border: 1px solid var(--baseline);
+  border-radius: 6px; background: var(--page); color: var(--ink);
+}
+.field .hint { font-size: 11px; color: var(--muted); }
+.field.wide { grid-column: 1 / -1; }
+
+button.primary {
+  background: var(--series-1); color: #fff; border: none; border-radius: 8px;
+  padding: 9px 18px; font: inherit; font-weight: 600; cursor: pointer;
+}
+button.primary:disabled { opacity: .5; cursor: default; }
+button.ghost {
+  background: none; border: 1px solid var(--baseline); color: var(--ink);
+  border-radius: 8px; padding: 6px 12px; font: inherit; cursor: pointer;
+}
+button.linkish { background: none; border: none; color: var(--series-1); cursor: pointer; font: inherit; padding: 0; }
+
+.type-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+.type-card {
+  border: 1px solid var(--border); border-radius: var(--radius); padding: 12px;
+  cursor: pointer; background: var(--surface-1); text-align: left; font: inherit; color: var(--ink);
+}
+.type-card:hover { border-color: var(--series-1); }
+.type-card.selected { border-color: var(--series-1); box-shadow: 0 0 0 1px var(--series-1); }
+.type-card b { display: block; margin-bottom: 4px; }
+.type-card span { color: var(--ink-2); font-size: 12px; }
+
+.headline { display: flex; gap: 26px; flex-wrap: wrap; align-items: baseline; }
+.headline .big { font-size: 34px; font-weight: 700; }
+.headline .unit { color: var(--ink-2); font-size: 13px; }
+.stat { display: flex; flex-direction: column; }
+.stat .v { font-size: 19px; font-weight: 650; }
+.stat .k { font-size: 12px; color: var(--ink-2); }
+
+.warning { border-left: 3px solid; padding: 8px 12px; margin: 6px 0; border-radius: 4px; background: var(--page); }
+.warning.danger { border-color: var(--status-critical); }
+.warning.caution { border-color: var(--status-warning); }
+.warning.info { border-color: var(--series-1); }
+.warning .code { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.warning .icon { margin-right: 6px; }
+.warning a { color: var(--series-1); font-size: 12px; }
+
+.defaults { display: flex; flex-wrap: wrap; gap: 6px; }
+.default-chip {
+  display: inline-flex; align-items: center; gap: 6px; font-size: 12px;
+  background: var(--page); border: 1px dashed var(--baseline); border-radius: 999px; padding: 3px 10px;
+  color: var(--ink-2);
+}
+
+.summary { font-size: 14px; background: var(--page); border-radius: 8px; padding: 12px; border: 1px solid var(--grid); }
+
+.chart-wrap { position: relative; }
+.chart-tooltip {
+  position: absolute; pointer-events: none; background: var(--surface-1);
+  border: 1px solid var(--border); border-radius: 6px; padding: 6px 9px;
+  font-size: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.12); z-index: 5; max-width: 320px;
+}
+.legend { display: flex; gap: 16px; font-size: 12px; color: var(--ink-2); margin: 4px 2px; flex-wrap: wrap; }
+.legend .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+
+table.plain { border-collapse: collapse; width: 100%; font-size: 13px; }
+table.plain th { text-align: left; color: var(--ink-2); font-weight: 500; border-bottom: 1px solid var(--grid); padding: 6px 8px; }
+table.plain td { border-bottom: 1px solid var(--grid); padding: 6px 8px; font-variant-numeric: tabular-nums; }
+
+.progress { height: 8px; background: var(--grid); border-radius: 999px; overflow: hidden; }
+.progress > div { height: 100%; background: var(--series-1); }
+
+.mono { font-family: ui-monospace, monospace; font-size: 12px; }
+.muted { color: var(--muted); }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.spacer { flex: 1; }
+details.adv summary { cursor: pointer; color: var(--ink-2); margin: 8px 0; }

@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/api.ts","./src/main.tsx","./src/types.ts","./src/components/ConstraintWaterfall.tsx","./src/components/Dashboard.tsx","./src/components/DrawdownChart.tsx","./src/components/ResultView.tsx","./src/components/ScenarioCompare.tsx","./src/components/TradeForm.tsx"],"version":"5.9.3"}
