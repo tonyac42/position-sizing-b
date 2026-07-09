@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sizer-llm"
+version = "0.1.0"
+description = "LLM tool interface for Sizer: MCP server + function-calling schema, with anti-hallucination guardrails."
+requires-python = ">=3.11"
+dependencies = ["mcp>=1.0", "httpx>=0.24"]
+
+[project.optional-dependencies]
+test = ["pytest>=7", "sizer-api"]
+
+[project.scripts]
+sizer-mcp = "sizer_llm.mcp_server:main"
+
+[tool.setuptools.packages.find]
+include = ["sizer_llm*"]
+
+[tool.setuptools.package-data]
+sizer_llm = ["function_schema.json"]
