@@ -1,9 +1,0 @@
-Metadata-Version: 2.4
-Name: sizer-engine
-Version: 0.1.0
-Summary: Universal position sizing engine: Kelly growth optimization under a stack of real-world constraints.
-Requires-Python: >=3.11
-Requires-Dist: pydantic>=2.0
-Provides-Extra: test
-Requires-Dist: pytest>=7; extra == "test"
-Requires-Dist: hypothesis>=6; extra == "test"

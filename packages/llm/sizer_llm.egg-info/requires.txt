@@ -1,6 +1,0 @@
-mcp>=1.0
-httpx>=0.24
-
-[test]
-pytest>=7
-sizer-api

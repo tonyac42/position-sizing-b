@@ -1,2 +1,0 @@
-[console_scripts]
-sizer-mcp = sizer_llm.mcp_server:main
