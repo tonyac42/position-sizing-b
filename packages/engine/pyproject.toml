@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sizer-engine"
+version = "0.1.0"
+description = "Universal position sizing engine: Kelly growth optimization under a stack of real-world constraints."
+requires-python = ">=3.11"
+dependencies = ["pydantic>=2.0"]
+
+[project.optional-dependencies]
+test = ["pytest>=7", "hypothesis>=6"]
+
+[tool.setuptools.packages.find]
+include = ["sizer_engine*"]
