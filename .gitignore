@@ -7,3 +7,4 @@ sizer.db
 *.db
 node_modules/
 dist/
+.vite/
